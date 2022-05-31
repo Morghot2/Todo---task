@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import ListBody from "./ListBody";
 import Header from "./Header";
+import DeleteButton from "./DeleteButton";
 
 const App = () => {
   const [userList, setUserList] = useState([
-    { 
-      id: 1, firstName: "John", lastName: "Doe", email: "johndoe@gmail.com", age: 27 },
+    {
+      id: 1,
+      firstName: "John",
+      lastName: "Doe",
+      email: "johndoe@gmail.com",
+      age: 27,
+    },
     {
       id: 2,
       firstName: "Max",
