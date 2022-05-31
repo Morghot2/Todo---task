@@ -22,7 +22,7 @@ const ListBody = ({ userList, setUserList }) => {
             <TableCell>Email</TableCell>
             <TableCell>Age</TableCell>
             <TableCell>Edit</TableCell>
-            <TableCell>Modify</TableCell>
+            <TableCell>Delete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

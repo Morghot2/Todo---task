@@ -1,5 +1,7 @@
 import React from 'react'
 
+import DeleteButton from './DeleteButton';
+
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 
@@ -11,7 +13,7 @@ const User = ({ position, userList, setUserList }) => {
       <TableCell>{userList[position].email}</TableCell>
       <TableCell>{userList[position].age}</TableCell>
       <TableCell>asad</TableCell>
-      <TableCell>asdasda</TableCell>
+      <TableCell><DeleteButton position={position} userList={userList} setUserList={setUserList}></DeleteButton></TableCell>
     </TableRow>
   )
 }
