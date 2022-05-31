@@ -1,25 +1,29 @@
 import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import ModifyButton from "./ModifyButton";
+import DeleteButton from "./DeleteButton";
 
 const columns = [
-  { field: "firstName", headerName: "First name", width: 130 },
-  { field: "lastName", headerName: "Last name", width: 130 },
+  { field: "firstName", headerName: "First name", flex: 1 },
+  { field: "lastName", headerName: "Last name", flex: 1 },
   {
     field: "email",
     headerName: "Email",
-    width: 160,
+    flex: 1,
   },
   {
     field: "age",
     headerName: "Age",
-    type: "number",
-    width: 90,
+    
+    flex: 1,
   },
   {
     field: "edit",
     headerName: "Edit",
-    width: 90,
+    flex: 1,
+    maxWidth: 100,
+    
+
     renderCell: (cellValues) => {
       return <ModifyButton />;
     },
@@ -27,22 +31,29 @@ const columns = [
   {
     field: "delete",
     headerName: "Delete",
-    width: 90,
+    flex: 1,
+    maxWidth: 100,
+    
+
     renderCell: (cellValues) => {
-      return <ModifyButton />;
+      return <DeleteButton />;
     },
   },
 ];
 
 const ListBody = ({ userList }) => {
   return (
-    <div style={{ height: 400, width: "100%" }}>
-      <DataGrid
-        rows={userList}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-      />
+    <div style={{ height: 400 }}>
+      <div style={{ display: "flex", height: "100%" }}>
+        <div style={{ flexGrow: 1 }}>
+          <DataGrid
+            rows={userList}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+          />
+        </div>
+      </div>
     </div>
   );
 };
