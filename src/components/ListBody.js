@@ -24,7 +24,7 @@ const columns = [
     maxWidth: 100,
     
 
-    renderCell: (cellValues) => {
+    renderCell: () => {
       return <ModifyButton />;
     },
   },
@@ -35,7 +35,7 @@ const columns = [
     maxWidth: 100,
     
 
-    renderCell: (cellValues) => {
+    renderCell: () => {
       return <DeleteButton />;
     },
   },
@@ -47,6 +47,7 @@ const ListBody = ({ userList }) => {
       <div style={{ display: "flex", height: "100%" }}>
         <div style={{ flexGrow: 1 }}>
           <DataGrid
+          
             rows={userList}
             columns={columns}
             pageSize={5}
