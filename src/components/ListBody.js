@@ -23,7 +23,7 @@ const ListBody = ({
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
-          <TableRow>
+          <TableRow >
             <TableCell>First Name</TableCell>
             <TableCell>Last Name</TableCell>
             <TableCell>Email</TableCell>
@@ -40,8 +40,6 @@ const ListBody = ({
                 setUserList={setUserList}
                 key={userList.indexOf(user)}
                 position={userList.indexOf(user)}
-                isShown={isShown}
-                setIsShown={setIsShown}
                 handleShow={handleShow}
               />
             );

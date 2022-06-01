@@ -4,16 +4,18 @@ import React from "react";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const DeleteButton = ({ position, userList, setUserList }) => {
+const DeleteButton = ({ position, userList, setUserList, action, handleShow }) => {
 
 
-  const removeUser = () => {
-    setUserList(userList.filter((user) => position !== userList.indexOf(user)));
+  const handleUser = () => {
+    // setUserList(userList.filter((user) => position !== userList.indexOf(user)));
+    handleShow()
+    
   };
 
   return (
     // <Stack direction="row">
-    <Button variant="contained" color="error" onClick={removeUser}>
+    <Button variant="contained" color="error" onClick={handleUser}>
       <DeleteIcon />
     </Button>
     // </Stack>
