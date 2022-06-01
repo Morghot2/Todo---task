@@ -14,8 +14,8 @@ import Paper from "@mui/material/Paper";
 const ListBody = ({
   userList,
   setUserList,
-  isShown,
-  setIsShown,
+  handleButtonType,
+
   handleShow,
 }) => {
   return (
@@ -41,6 +41,7 @@ const ListBody = ({
                 key={userList.indexOf(user)}
                 position={userList.indexOf(user)}
                 handleShow={handleShow}
+                handleButtonType={handleButtonType}
               />
             );
           })}

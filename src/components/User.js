@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 
 
-const User = ({ position, userList, setUserList, isShown, setIsShown, handleShow }) => {
+const User = ({ position, userList, setUserList, handleButtonType, handleShow }) => {
   return (
     
     <TableRow>
@@ -16,7 +16,7 @@ const User = ({ position, userList, setUserList, isShown, setIsShown, handleShow
       <TableCell>{userList[position].lastName}</TableCell>
       <TableCell>{userList[position].email}</TableCell>
       <TableCell>{userList[position].age}</TableCell>
-      <TableCell><ModifyButton isShown={isShown} setIsShown={setIsShown} handleShow={handleShow} action={"edit"}/></TableCell>
+      <TableCell><ModifyButton handleShow={handleShow} action={"edit"} handleButtonType={handleButtonType}/></TableCell>
       <TableCell><DeleteButton position={position} userList={userList} setUserList={setUserList} action={"delete"}></DeleteButton></TableCell>
       
       

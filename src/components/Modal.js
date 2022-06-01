@@ -5,7 +5,7 @@ import FormLabel from "@mui/material/FormLabel";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 
-const Modal = ({userList, setUserList, handleShow}) => {
+const Modal = ({userList, setUserList, handleShow }) => {
   const user = {
     id: 0,
     firstName: "",
