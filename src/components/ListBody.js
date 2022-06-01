@@ -11,8 +11,15 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-const ListBody = ({ userList, setUserList }) => {
+const ListBody = ({
+  userList,
+  setUserList,
+  isShown,
+  setIsShown,
+  handleShow,
+}) => {
   return (
+    
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
@@ -27,11 +34,23 @@ const ListBody = ({ userList, setUserList }) => {
         </TableHead>
         <TableBody>
           {userList.map((user) => {
-            return <User userList={userList} setUserList={setUserList} key={userList.indexOf(user)} position={userList.indexOf(user)}/>;
+            return (
+              <User
+                userList={userList}
+                setUserList={setUserList}
+                key={userList.indexOf(user)}
+                position={userList.indexOf(user)}
+                isShown={isShown}
+                setIsShown={setIsShown}
+                handleShow={handleShow}
+              />
+            );
           })}
         </TableBody>
       </Table>
     </TableContainer>
+    
+    
   );
 };
 
