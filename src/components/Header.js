@@ -1,7 +1,7 @@
 import React from "react";
 import ModifyButton from "./ModifyButton";
 
-const Header = () => {
+const Header = ({ userList, setUserList }) => {
   return (
     <div className="header">
       <h1>User List</h1>

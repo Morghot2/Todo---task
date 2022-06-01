@@ -11,7 +11,7 @@ const App = () => {
   ]);
   return (
     <div>
-      <Header />
+      <Header userList={userList} setUserList={setUserList} />
       <ListBody userList={userList} setUserList={setUserList} />
     </div>
   );
