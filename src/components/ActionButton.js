@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-// import Stack from "@mui/material/Stack";
+
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -12,42 +12,37 @@ const ActionButton = ({
   handleShow,
   userValues,
   buttonType,
-  currentUser
+  currentUser,
 }) => {
-    
+
   const handleUser = () => {
-      
+    
     if (action === "delete") {
       
-        console.log(buttonType)
-
       setUserList(
-        
         userList.filter((user) => position !== userList.indexOf(user))
       );
-    } else if (buttonType === "new"){
-        console.log(buttonType)
-    
+    } else if (buttonType === "new") {
+      
       setUserList([...userList, userValues]);
       handleShow();
-    } else if (buttonType === "edit") {
-      console.log(buttonType)
 
-      const updateUser = [...userList]
-      updateUser[currentUser] = userValues
-      console.log(currentUser)
-      console.log(userValues)
-      
-      console.log(updateUser)
-      setUserList([...updateUser])
-      handleShow()
+    } else if (buttonType === "edit") {
+     
+      const updateUser = [...userList];
+      updateUser[currentUser] = userValues;
+
+      setUserList([...updateUser]);
+      handleShow();
     }
   };
+  const icon = <DeleteIcon></DeleteIcon>
+
 
   return (
     // <Stack direction="row">
-    <Button variant="contained" color="error" onClick={handleUser}>
-      <DeleteIcon />
+    <Button variant="contained" color={'error'} onClick={handleUser}>
+      {icon}
     </Button>
     // </Stack>
   );

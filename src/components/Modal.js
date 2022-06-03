@@ -38,6 +38,11 @@ const Modal = ({ userList, setUserList, handleShow, buttonType, setButtonType, c
   // F
   return (
     <div className="form-wrapper">
+        <div className="form-header">
+            <span>User details</span>
+            <button onClick={handleShow}>x</button>
+        </div>
+        <div>
       <form className="user-form">
         <Grid
           container
@@ -86,6 +91,7 @@ const Modal = ({ userList, setUserList, handleShow, buttonType, setButtonType, c
             />
           </Grid>
           <ActionButton
+          
             userList={userList}
             setUserList={setUserList}
             handleShow={handleShow}
@@ -98,6 +104,7 @@ const Modal = ({ userList, setUserList, handleShow, buttonType, setButtonType, c
           />
         </Grid>
       </form>
+      </div>
     </div>
   );
 };
