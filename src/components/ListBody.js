@@ -15,8 +15,9 @@ const ListBody = ({
   userList,
   setUserList,
   handleButtonType,
-
   handleShow,
+  buttonType,
+  changeCurrentUser
 }) => {
   return (
     
@@ -42,6 +43,8 @@ const ListBody = ({
                 position={userList.indexOf(user)}
                 handleShow={handleShow}
                 handleButtonType={handleButtonType}
+                buttonType={buttonType}
+                changeCurrentUser={changeCurrentUser}
               />
             );
           })}

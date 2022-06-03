@@ -1,8 +1,9 @@
 import React from "react";
-import Modal from "./Modal";
+// import Modal from "./Modal";
 import ModifyButton from "./ModifyButton";
 
 const Header = ({ handleShow, handleButtonType }) => {
+  
 
 
 
