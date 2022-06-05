@@ -1,6 +1,7 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
+import { UserContext } from "./App";
 import ActionButton from "./ActionButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Grid from "@material-ui/core/Grid";
@@ -9,7 +10,8 @@ import Button from "@mui/material/Button";
 
 import "../modal.css";
 
-const Modal = ({ handleShow }) => {
+const Modal = () => {
+  const { handleShow } = useContext(UserContext);
   const [userValues, setUserValues] = useState({
     id: 0,
     firstName: "",
@@ -87,7 +89,7 @@ const Modal = ({ handleShow }) => {
               </Grid>
               <ActionButton
                 userValues={userValues}
-                setUserValues={setUserValues}
+                
                 action={"edit"}
               />
             </Grid>
