@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import Modal from "./Modal";
+import MyModal from "./Modal";
 import ListBody from "./ListBody";
 import Header from "./Header";
 
@@ -60,7 +60,7 @@ const App = () => {
     <UserContext.Provider value={contextStore}>
       <Header />
       <ListBody />
-      {isShown && <Modal />}
+      {isShown && <MyModal />}
     </UserContext.Provider>
   );
 };
