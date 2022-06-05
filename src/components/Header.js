@@ -1,16 +1,11 @@
 import React from "react";
-// import Modal from "./Modal";
 import ModifyButton from "./ModifyButton";
 
-const Header = ({ handleShow, handleButtonType }) => {
-  
-
-
-
+const Header = () => {
   return (
     <div className="header">
       <h1>User List</h1>
-      <ModifyButton  handleShow={handleShow} action={"new"} handleButtonType={handleButtonType}/>    
+      <ModifyButton action={"new"} />
     </div>
   );
 };

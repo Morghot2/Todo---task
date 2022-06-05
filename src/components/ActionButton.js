@@ -1,50 +1,38 @@
-import React, { useState } from "react";
-
+import React, { useState, useContext } from "react";
+import { UserContext } from "./App";
 
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const ActionButton = ({
-  position,
-  userList,
-  setUserList,
-  action,
-  handleShow,
-  userValues,
-  buttonType,
-  currentUser,
-}) => {
+const ActionButton = ({ position, action, userValues }) => {
+  const { buttonType, handleShow, currentUser, userList } =
+    useContext(UserContext);
+  const [usersList, setUsersList] = userList;
+  const [buttonsType, setButtonsType] = buttonType;
+  const [currentsUser, setCurrentsUser] = currentUser;
 
   const handleUser = () => {
-    
     if (action === "delete") {
-      
-      setUserList(
-        userList.filter((user) => position !== userList.indexOf(user))
+      setUsersList(
+        usersList.filter((user) => position !== usersList.indexOf(user))
       );
-    } else if (buttonType === "new") {
-      
-      setUserList([...userList, userValues]);
+    } else if (buttonsType === "new") {
+      setUsersList([...usersList, userValues]);
       handleShow();
+    } else if (buttonsType === "edit") {
+      const updateUser = [...usersList];
+      updateUser[currentsUser] = userValues;
 
-    } else if (buttonType === "edit") {
-     
-      const updateUser = [...userList];
-      updateUser[currentUser] = userValues;
-
-      setUserList([...updateUser]);
+      setUsersList([...updateUser]);
       handleShow();
     }
   };
-  const icon = <DeleteIcon></DeleteIcon>
-
+  const icon = <DeleteIcon></DeleteIcon>;
 
   return (
-    // <Stack direction="row">
-    <Button variant="contained" color={'error'} onClick={handleUser}>
+    <Button variant="contained" color={"error"} onClick={handleUser}>
       {icon}
     </Button>
-    // </Stack>
   );
 };
 

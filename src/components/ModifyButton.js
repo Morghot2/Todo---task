@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
+import { UserContext } from "./App";
 
-// import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
 
-const ModifyButton = ({ handleShow, action, handleButtonType, changeCurrentUser, position }) => {
+const ModifyButton = ({action, position}) => {
+  const {handleButtonType, handleShow, changeCurrentUser} = useContext(UserContext)
   const handleButtonClick = () => {
     handleShow();
     handleButtonType(action);

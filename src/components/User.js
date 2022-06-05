@@ -1,28 +1,30 @@
-import React from 'react'
-
-import Modal from './Modal';
-import ActionButton from './ActionButton';
-import ModifyButton from './ModifyButton';
-
-import TableRow from '@mui/material/TableRow';
-import TableCell from '@mui/material/TableCell';
+import React, {useContext} from "react";
+import { UserContext } from "./App";
 
 
-const User = ({ position, userList, setUserList, handleButtonType, handleShow, buttonType, changeCurrentUser }) => {
-  const action = "edit"
+import ActionButton from "./ActionButton";
+import ModifyButton from "./ModifyButton";
+
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+
+const User = ({ position }) => {
+  const { userList } = useContext(UserContext);
+  const [usersList, setUsersList] = userList;
   return (
-    
     <TableRow>
-      <TableCell>{userList[position].firstName}</TableCell>
-      <TableCell>{userList[position].lastName}</TableCell>
-      <TableCell>{userList[position].email}</TableCell>
-      <TableCell>{userList[position].age}</TableCell>
-      <TableCell><ModifyButton handleShow={handleShow} action={action} handleButtonType={handleButtonType} position={position} changeCurrentUser={changeCurrentUser}/></TableCell>
-      <TableCell><ActionButton buttonType={buttonType} position={position} userList={userList} setUserList={setUserList} action={"delete"}></ActionButton></TableCell>
-      
-      
+      <TableCell>{usersList[position].firstName}</TableCell>
+      <TableCell>{usersList[position].lastName}</TableCell>
+      <TableCell>{usersList[position].email}</TableCell>
+      <TableCell>{usersList[position].age}</TableCell>
+      <TableCell>
+        <ModifyButton action={"edit"} position={position} />
+      </TableCell>
+      <TableCell>
+        <ActionButton position={position} action={"delete"}></ActionButton>
+      </TableCell>
     </TableRow>
-  )
-}
+  );
+};
 
-export default User
+export default User;

@@ -4,40 +4,64 @@ import Modal from "./Modal";
 import ListBody from "./ListBody";
 import Header from "./Header";
 
+export const UserContext = React.createContext();
 
 const App = () => {
   const [isShown, setIsShown] = useState(false);
-  const [currentUser, setCurrentUser] = useState(0)
-  const [buttonType, setButtonType] = useState('')
+  const [currentUser, setCurrentUser] = useState(1212);
+  const [buttonType, setButtonType] = useState("");
   const [userList, setUserList] = useState([
-    {id: 1, firstName: "John", lastName: "Doe", email: "johndoe@gmail.com", age: 27,},
-    {id: 2, firstName: "Lech", lastName: "Nowak", email: "nowaklech@gmail.com", age: 25,},
-    {id: 3, firstName: "Jan", lastName: "Kowalski", email: "jankowalski@gmail.com", age: 43,},
+    {
+      id: 1,
+      firstName: "John",
+      lastName: "Doe",
+      email: "johndoe@gmail.com",
+      age: 27,
+    },
+    {
+      id: 2,
+      firstName: "Lech",
+      lastName: "Nowak",
+      email: "nowaklech@gmail.com",
+      age: 25,
+    },
+    {
+      id: 3,
+      firstName: "Jan",
+      lastName: "Kowalski",
+      email: "jankowalski@gmail.com",
+      age: 43,
+    },
   ]);
-  
+
   const changeCurrentUser = (position) => {
-    setCurrentUser(position)
-    console.log(currentUser)
-  }
+    setCurrentUser(position);
 
-  const handleShow = e => {
-    setIsShown(isShown => !isShown);
-    console.log("Working")
-  }
+  };
+
+  const handleShow = (e) => {
+    setIsShown((isShown) => !isShown);
+
+  };
   const handleButtonType = (action) => {
-    // action === "new" ? setButtonType("new") : setButtonType("edit")
-    setButtonType(action)
-    
-    // console.log(buttonType)
-  }
-
+    setButtonType(action);
+  };
+  const contextStore = {
+    shown: [isShown, setIsShown],
+    currentUser: [currentUser, setCurrentUser],
+    buttonType: [buttonType, setButtonType],
+    userList: [userList, setUserList],
+    changeCurrentUser: changeCurrentUser,
+    handleShow: handleShow,
+    handleButtonType: handleButtonType,
+  };
 
   return (
-    <div>
-      <Header handleShow={handleShow} handleButtonType={handleButtonType}/>
-      <ListBody userList={userList} setUserList={setUserList} handleShow={handleShow} handleButtonType={handleButtonType} buttonType={buttonType} changeCurrentUser={changeCurrentUser}/>
-      {isShown && <Modal userList={userList} setUserList={setUserList} handleShow={handleShow} buttonType={buttonType} handleButtonType={handleButtonType} currentUser={currentUser}/>}
-    </div>
+    <UserContext.Provider value={contextStore}>
+      <Header />
+      <ListBody />
+      {isShown && <Modal />}
+    </UserContext.Provider>
   );
 };
 
