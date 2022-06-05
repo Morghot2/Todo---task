@@ -1,12 +1,31 @@
-.form-wrapper {
+/* .form-wrapper {
     height: 50vh;
     width: 50vw;
 
     border: solid black;
     border-radius: 5%;
-}
-.form-header {
+} */
+/* .form-header {
     display: flex;
     justify-content: space-between;
     margin: 20px;
-}
+} */
+
+
+
+
+
+
+
+
+/* 
+height: 100vh;
+position: absolute;
+right: 0;
+left: 0;
+top: 0;
+margin: auto;
+display: flex;
+justify-content: center;
+align-content: space-around;
+align-items: center; */

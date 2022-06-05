@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 
 import ActionButton from "./ActionButton";
-import FormLabel from "@mui/material/FormLabel";
+import CloseIcon from '@mui/icons-material/Close';
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-import Box from "@material-ui/core/Box";
+import Button from "@mui/material/Button";
 
 import "../modal.css";
 
@@ -38,9 +38,10 @@ const Modal = ({ userList, setUserList, handleShow, buttonType, setButtonType, c
   // F
   return (
     <div className="form-wrapper">
+        <div>
         <div className="form-header">
-            <span>User details</span>
-            <button onClick={handleShow}>x</button>
+            <span><h2>User details</h2></span>
+            <Button onClick={handleShow} color="error" size="medium"><CloseIcon></CloseIcon></Button>
         </div>
         <div>
       <form className="user-form">
@@ -104,6 +105,7 @@ const Modal = ({ userList, setUserList, handleShow, buttonType, setButtonType, c
           />
         </Grid>
       </form>
+      </div>
       </div>
     </div>
   );
