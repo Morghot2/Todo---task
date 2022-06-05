@@ -8,7 +8,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@mui/material/Button";
-import Box from '@mui/material/Box';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 import "../modal.css";
 
@@ -32,17 +33,6 @@ const MyModal = () => {
   };
 
   return (
-    // <div className="form-wrapper">
-    //   <div className="wrapper2">
-    //     <div className="form-header">
-    //       <span>
-    //         <h2>User details</h2>
-    //       </span>
-    //       <Button onClick={handleShow} color="error" size="medium">
-    //         <CloseIcon></CloseIcon>
-    //       </Button>
-    //     </div>
-    //     <div>
     <Modal
       className="modal"
       open={modalShown}
@@ -50,58 +40,72 @@ const MyModal = () => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-        <Box className="modal-box">
-      <form className="user-form">
-        <Grid
-          container
-          alignItems="center"
-          justifyContent="center"
-          direction="column"
+      <Box className="modal-box">
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between"
+          }}
         >
-          <Grid item></Grid>
-          <Grid item>
-            <TextField
-              id="first-input"
-              name="firstName"
-              label="First Name"
-              type="text"
-              value={userValues.name}
-              onChange={handleUserValueChange}
-            />
+          {" "}
+          <Typography variant="h5">User details</Typography>
+          <Button onClick={handleShow} color="error" size="medium">
+            <CloseIcon />
+          </Button>
+        </div>
+
+        <form className="user-form">
+          <Grid
+            container
+            alignItems="center"
+            justifyContent="center"
+            direction="column"
+          >
+            <Grid item></Grid>
+            <Grid item>
+              <TextField
+                id="first-input"
+                name="firstName"
+                label="First Name"
+                type="text"
+                value={userValues.name}
+                onChange={handleUserValueChange}
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                id="last-name"
+                name="lastName"
+                label="Last Name"
+                type="text"
+                value={userValues.name}
+                onChange={handleUserValueChange}
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                id="email"
+                name="email"
+                label="Email"
+                type="text"
+                value={userValues.name}
+                onChange={handleUserValueChange}
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                id="age"
+                name="age"
+                label="Age"
+                type="number"
+                value={userValues.name}
+                onChange={handleUserValueChange}
+              />
+            </Grid>
+            <ActionButton userValues={userValues} action={"edit"} />
           </Grid>
-          <Grid item>
-            <TextField
-              id="last-name"
-              name="lastName"
-              label="Last Name"
-              type="text"
-              value={userValues.name}
-              onChange={handleUserValueChange}
-            />
-          </Grid>
-          <Grid item>
-            <TextField
-              id="email"
-              name="email"
-              label="Email"
-              type="text"
-              value={userValues.name}
-              onChange={handleUserValueChange}
-            />
-          </Grid>
-          <Grid item>
-            <TextField
-              id="age"
-              name="age"
-              label="Age"
-              type="number"
-              value={userValues.name}
-              onChange={handleUserValueChange}
-            />
-          </Grid>
-          <ActionButton userValues={userValues} action={"edit"} />
-        </Grid>
-      </form>
+        </form>
       </Box>
     </Modal>
     //   </div>

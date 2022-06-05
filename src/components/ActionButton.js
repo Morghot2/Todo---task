@@ -11,6 +11,21 @@ const ActionButton = ({ position, action, userValues }) => {
   const [buttonsType, setButtonsType] = buttonType;
   const [currentsUser, setCurrentsUser] = currentUser;
 
+  let buttonProperties = {text: "", color: ""};
+
+
+
+  if (action === "delete") {
+    buttonProperties.text = <DeleteIcon />
+    buttonProperties.color = "error"
+  } else if (buttonsType === "edit") {
+    buttonProperties.text = "Update"
+    buttonProperties.color = "warning"
+  } else {
+    buttonProperties.text = "Add"
+    buttonProperties.color = "primary"
+  }
+
   const handleUser = () => {
     if (action === "delete") {
       setUsersList(
@@ -26,12 +41,13 @@ const ActionButton = ({ position, action, userValues }) => {
       setUsersList([...updateUser]);
       handleShow();
     }
+
+   
   };
-  const icon = <DeleteIcon></DeleteIcon>;
 
   return (
-    <Button variant="contained" color={"error"} onClick={handleUser}>
-      {icon}
+    <Button variant="contained" color={buttonProperties.color} onClick={handleUser}>
+      {buttonProperties.text}
     </Button>
   );
 };
