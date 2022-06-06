@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "./App";
 
 import Button from "@mui/material/Button";
@@ -23,7 +23,7 @@ const ActionButton = ({ position, action, userValues }) => {
     buttonProperties.color = "warning"
   } else {
     buttonProperties.text = "Add"
-    buttonProperties.color = "primary"
+    buttonProperties.color = "success"
   }
 
   const handleUser = () => {

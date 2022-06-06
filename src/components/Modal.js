@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useContext } from "react";
 
 import { UserContext } from "./App";
+
 import ActionButton from "./ActionButton";
 import Modal from "@mui/material/Modal";
 import CloseIcon from "@mui/icons-material/Close";
@@ -46,6 +47,7 @@ const MyModal = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between"
+            
           }}
         >
           {" "}
@@ -61,13 +63,15 @@ const MyModal = () => {
             alignItems="center"
             justifyContent="center"
             direction="column"
+        
           >
-            <Grid item></Grid>
+            
             <Grid item>
               <TextField
                 id="first-input"
                 name="firstName"
                 label="First Name"
+                
                 type="text"
                 value={userValues.name}
                 onChange={handleUserValueChange}
@@ -83,7 +87,7 @@ const MyModal = () => {
                 onChange={handleUserValueChange}
               />
             </Grid>
-            <Grid item>
+            <Grid item >
               <TextField
                 id="email"
                 name="email"
@@ -108,8 +112,7 @@ const MyModal = () => {
         </form>
       </Box>
     </Modal>
-    //   </div>
-    // </div>
+
   );
 };
 

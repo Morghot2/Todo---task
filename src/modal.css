@@ -7,10 +7,14 @@
 
 .modal-box {
     
-    width: 400px;
+    width: 500px;
     height: 350px;
     background-color: 'primary.dark';
     border-radius: 2%;
     background-color: white;
     
 }
+
+/* .user-form {
+    width: 500px !important;
+} */
