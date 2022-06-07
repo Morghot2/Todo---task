@@ -1,10 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import produce from "immer";
 
-
 const userSlice = createSlice({
   name: "users",
-
 
   initialState: [
     {
@@ -31,19 +29,22 @@ const userSlice = createSlice({
   ],
   reducers: {
     addUser: (state, action) => {
-      const newUser = action.payload;
-      state.push(newUser);
+      return produce(state, (draftState) => {
+        draftState.push(action.payload);
+      });
     },
     deleteUser: (state, action) => {
-        return state.filter((user) => action.payload !== state.indexOf(user))
+      return state.filter((user) => action.payload !== state.indexOf(user));
     },
     editUser: (state, action) => {
-        return produce(state, draftState => {
-            draftState[action.payload.currentsUser] = action.payload.userValues
-          })
-        
+      const index = state.findIndex((entry) => entry.id === action.payload.id);
+      // const index = state.indexOf(state.filter((user) => action.payload == user.id));
+      console.log(index);
+      console.log(action.payload.id);
+      return produce(state, (draftState) => {
+        draftState[index] = action.payload;
+      });
     },
-    
   },
 });
 

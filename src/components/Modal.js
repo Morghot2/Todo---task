@@ -1,6 +1,7 @@
 import React from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { useState, useContext } from "react";
-
+import { useSelector } from "react-redux";
 import { UserContext } from "./App";
 
 import ActionButton from "./ActionButton";
@@ -15,10 +16,12 @@ import Typography from "@mui/material/Typography";
 import "../modal.css";
 
 const MyModal = () => {
+  const users = useSelector((state) => state.users)
+  
   const { handleShow, shown } = useContext(UserContext);
   const [modalShown, setModalShown] = shown;
   const [userValues, setUserValues] = useState({
-    id: 0,
+    id: uuidv4(),
     firstName: "",
     lastName: "",
     email: "",
@@ -26,6 +29,7 @@ const MyModal = () => {
   });
 
   const handleUserValueChange = (e) => {
+    console.log(userValues)
     const { name, value } = e.target;
     setUserValues({
       ...userValues,

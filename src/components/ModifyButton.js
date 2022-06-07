@@ -1,19 +1,20 @@
 import React, { useContext } from "react";
 import { UserContext } from "./App";
-
+import { useSelector, useDispatch } from "react-redux";
+import { changeCurrentUser } from "../redux/currentUserSlice";
 
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
 
 const ModifyButton = ({ action, position }) => {
-  const { handleButtonType, handleShow, changeCurrentUser } =
-    useContext(UserContext);
+  const dispatch = useDispatch();
+
+  const { handleButtonType, handleShow } = useContext(UserContext);
   const handleButtonClick = () => {
-    console.log(position)
     handleShow();
     handleButtonType(action);
     if (position >= 0) {
-      changeCurrentUser(position);
+      dispatch(changeCurrentUser(position));
     } else return null;
   };
   if (action === "new") {

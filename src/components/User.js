@@ -1,7 +1,6 @@
-import React, {useContext} from "react";
-import { UserContext } from "./App";
-import { useSelector } from "react-redux";
+import React from "react";
 
+import { useSelector } from "react-redux";
 
 import ActionButton from "./ActionButton";
 import ModifyButton from "./ModifyButton";
@@ -10,9 +9,8 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 
 const User = ({ position }) => {
-  const users = useSelector((state) => state.users)
-  const { userList } = useContext(UserContext);
-  const [usersList, setUsersList] = userList;
+  const users = useSelector((state) => state.users);
+
   return (
     <TableRow>
       <TableCell>{users[position].firstName}</TableCell>
