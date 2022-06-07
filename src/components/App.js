@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { useSelector } from "react-redux";
 import MyModal from "./Modal";
 import ListBody from "./ListBody";
 import Header from "./Header";
@@ -7,6 +7,7 @@ import Header from "./Header";
 export const UserContext = React.createContext();
 const redux = 'dsada'
 const App = () => {
+   
   const [isShown, setIsShown] = useState(false);
   const [currentUser, setCurrentUser] = useState(1212);
   const [buttonType, setButtonType] = useState("");

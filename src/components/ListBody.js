@@ -1,5 +1,6 @@
 import React, {useContext} from "react";
 import User from "./User";
+import { useSelector } from "react-redux";
 
 import { UserContext } from "./App";
 
@@ -14,6 +15,8 @@ import Paper from "@mui/material/Paper";
 const ListBody = () => {
   const { userList } = useContext(UserContext);
   const [usersList, setUsersList] = userList;
+
+  const users = useSelector((state) => state.users)
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
@@ -28,12 +31,12 @@ const ListBody = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {usersList.map((user) => {
+          {users.map((user) => {
             
             return (
               <User
-                key={usersList.indexOf(user)}
-                position={usersList.indexOf(user)}
+                key={users.indexOf(user)}
+                position={users.indexOf(user)}
               />
             );
           })}

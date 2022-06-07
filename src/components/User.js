@@ -1,5 +1,6 @@
 import React, {useContext} from "react";
 import { UserContext } from "./App";
+import { useSelector } from "react-redux";
 
 
 import ActionButton from "./ActionButton";
@@ -9,14 +10,15 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 
 const User = ({ position }) => {
+  const users = useSelector((state) => state.users)
   const { userList } = useContext(UserContext);
   const [usersList, setUsersList] = userList;
   return (
     <TableRow>
-      <TableCell>{usersList[position].firstName}</TableCell>
-      <TableCell>{usersList[position].lastName}</TableCell>
-      <TableCell>{usersList[position].email}</TableCell>
-      <TableCell>{usersList[position].age}</TableCell>
+      <TableCell>{users[position].firstName}</TableCell>
+      <TableCell>{users[position].lastName}</TableCell>
+      <TableCell>{users[position].email}</TableCell>
+      <TableCell>{users[position].age}</TableCell>
       <TableCell>
         <ModifyButton action={"edit"} position={position} />
       </TableCell>

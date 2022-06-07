@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "./App";
+import { useDispatch } from "react-redux";
+import { addUser } from "../redux/userSlice"
 
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -12,6 +14,8 @@ const ActionButton = ({ position, action, userValues }) => {
   const [currentsUser, setCurrentsUser] = currentUser;
 
   let buttonProperties = {text: "", color: ""};
+
+  const dispatch = useDispatch()
 
 
 
@@ -34,6 +38,9 @@ const ActionButton = ({ position, action, userValues }) => {
     } else if (buttonsType === "new") {
       setUsersList([...usersList, userValues]);
       handleShow();
+      dispatch(addUser(userValues))
+      console.log(userList)
+
     } else if (buttonsType === "edit") {
       const updateUser = [...usersList];
       updateUser[currentsUser] = userValues;
