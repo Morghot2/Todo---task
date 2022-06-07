@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { UserContext } from "./App";
 import { useDispatch } from "react-redux";
-import { addUser } from "../redux/userSlice"
+import { addUser, deleteUser } from "../redux/userSlice"
+
 
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -32,6 +33,7 @@ const ActionButton = ({ position, action, userValues }) => {
 
   const handleUser = () => {
     if (action === "delete") {
+      dispatch(deleteUser(position))
       setUsersList(
         usersList.filter((user) => position !== usersList.indexOf(user))
       );

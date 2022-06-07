@@ -28,18 +28,17 @@ const userSlice = createSlice({
   reducers: {
     addUser: (state, action) => {
       const newUser = action.payload;
-      //   const newUser = {
-      //       id: action.payload.id,
-      //       firstName: action.payload.firstName,
-      //       lastName: action.payload.lastName,
-      //       email: action.payload.email,
-      //       age: action.payload.age,
-
-      //   };
       state.push(newUser);
     },
+    deleteUser: (state, action) => {
+        return state.filter((user) => action.payload !== state.indexOf(user))
+    },
+    editUser: (state, action) => {
+        return state.filter((user) => action.payload !== state.indexOf(user))
+    },
+    
   },
 });
 
-export const { addUser } = userSlice.actions;
+export const { addUser, deleteUser } = userSlice.actions;
 export default userSlice.reducer;
