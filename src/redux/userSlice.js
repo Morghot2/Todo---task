@@ -37,12 +37,13 @@ const userSlice = createSlice({
       return state.filter((user) => action.payload !== state.indexOf(user));
     },
     editUser: (state, action) => {
-      const index = state.findIndex((entry) => entry.id === action.payload.id);
+    //   const index = state.findIndex((entry) => entry.id === action.payload.id);
       // const index = state.indexOf(state.filter((user) => action.payload == user.id));
-      console.log(index);
-      console.log(action.payload.id);
+    //   console.log(index);
+    //   console.log(action.payload.id);
+    console.log(action.payload.currentUser)
       return produce(state, (draftState) => {
-        draftState[index] = action.payload;
+        draftState[action.payload.user] = action.payload.userValues;
       });
     },
   },

@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { useSelector } from "react-redux";
-import { UserContext } from "./App";
-import { useDispatch } from "react-redux";
 import { addUser, deleteUser, editUser } from "../redux/userSlice";
 
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { UserContext } from "./App";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const ActionButton = ({ position, action, userValues }) => {
   const { buttonType, handleShow } = useContext(UserContext);
@@ -17,9 +17,12 @@ const ActionButton = ({ position, action, userValues }) => {
 
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUser);
-
   const users = useSelector((state) => state.users);
- 
+  const user = currentUser.payload
+  console.log(currentUser)
+  console.log(users)
+
+
 
   if (action === "delete") {
     buttonProperties.text = <DeleteIcon />;
@@ -39,7 +42,8 @@ const ActionButton = ({ position, action, userValues }) => {
       handleShow();
       dispatch(addUser(userValues));
     } else if (buttonsType === "edit") {
-      dispatch(editUser(userValues));
+      console.log(currentUser)
+      dispatch(editUser({userValues, user}));
       handleShow();
     }
   };

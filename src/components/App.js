@@ -10,10 +10,6 @@ const App = () => {
   const [isShown, setIsShown] = useState(false);
   const [buttonType, setButtonType] = useState("");
 
-  // const changeCurrentUser = (position) => {
-  //   setCurrentUser(position);
-  // };
-
   const handleShow = (e) => {
     setIsShown((isShown) => !isShown);
   };
@@ -22,9 +18,9 @@ const App = () => {
   };
   const contextStore = {
     shown: [isShown, setIsShown],
-    // currentUser: [currentUser, setCurrentUser],
+
     buttonType: [buttonType, setButtonType],
-    // changeCurrentUser: changeCurrentUser,
+
     handleShow: handleShow,
     handleButtonType: handleButtonType,
   };

@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { UserContext } from "./App";
-import { useSelector, useDispatch } from "react-redux";
-import { changeCurrentUser } from "../redux/currentUserSlice";
 
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
+import { UserContext } from "./App";
+import { changeCurrentUser } from "../redux/currentUserSlice";
+import { useDispatch } from "react-redux";
 
 const ModifyButton = ({ action, position }) => {
   const dispatch = useDispatch();
