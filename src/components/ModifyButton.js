@@ -9,6 +9,7 @@ const ModifyButton = ({ action, position }) => {
   const { handleButtonType, handleShow, changeCurrentUser } =
     useContext(UserContext);
   const handleButtonClick = () => {
+    console.log(position)
     handleShow();
     handleButtonType(action);
     if (position >= 0) {

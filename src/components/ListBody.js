@@ -17,6 +17,7 @@ const ListBody = () => {
   const [usersList, setUsersList] = userList;
 
   const users = useSelector((state) => state.users)
+ 
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
@@ -32,11 +33,14 @@ const ListBody = () => {
         </TableHead>
         <TableBody>
           {users.map((user) => {
+           
+            
             
             return (
               <User
                 key={users.indexOf(user)}
                 position={users.indexOf(user)}
+                
               />
             );
           })}

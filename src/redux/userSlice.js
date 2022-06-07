@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import produce from "immer";
+
 
 const userSlice = createSlice({
   name: "users",
+
+
   initialState: [
     {
       id: 1,
@@ -34,11 +38,14 @@ const userSlice = createSlice({
         return state.filter((user) => action.payload !== state.indexOf(user))
     },
     editUser: (state, action) => {
-        return state.filter((user) => action.payload !== state.indexOf(user))
+        return produce(state, draftState => {
+            draftState[action.payload.currentsUser] = action.payload.userValues
+          })
+        
     },
     
   },
 });
 
-export const { addUser, deleteUser } = userSlice.actions;
+export const { addUser, deleteUser, editUser } = userSlice.actions;
 export default userSlice.reducer;

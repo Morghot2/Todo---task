@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "./App";
 import { useDispatch } from "react-redux";
-import { addUser, deleteUser } from "../redux/userSlice"
+import { addUser, deleteUser, editUser } from "../redux/userSlice"
 
 
 import Button from "@mui/material/Button";
@@ -34,6 +34,7 @@ const ActionButton = ({ position, action, userValues }) => {
   const handleUser = () => {
     if (action === "delete") {
       dispatch(deleteUser(position))
+      console.log(position)
       setUsersList(
         usersList.filter((user) => position !== usersList.indexOf(user))
       );
@@ -44,11 +45,18 @@ const ActionButton = ({ position, action, userValues }) => {
       console.log(userList)
 
     } else if (buttonsType === "edit") {
+      console.log(currentsUser)
       const updateUser = [...usersList];
       updateUser[currentsUser] = userValues;
 
       setUsersList([...updateUser]);
+      dispatch(editUser({
+      
+        currentsUser,
+        userValues
+      }))
       handleShow();
+      
     }
 
    
