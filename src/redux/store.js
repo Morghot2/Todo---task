@@ -1,10 +1,12 @@
+import buttonReducer from "./slices/buttonSlice";
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./userSlice"
-import currentUserReducer from "./currentUserSlice"
+import currentUserReducer from "./slices/currentUserSlice";
+import userReducer from "./slices/userSlice";
 
 export default configureStore({
-    reducer: {
-        users: userReducer,
-        currentUser: currentUserReducer
-    }
-})
+  reducer: {
+    users: userReducer,
+    currentUser: currentUserReducer,
+    button: buttonReducer,
+  },
+});

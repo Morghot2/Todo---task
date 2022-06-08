@@ -1,25 +1,24 @@
-import React from "react";
-import { v4 as uuidv4 } from 'uuid';
-import { useState, useContext } from "react";
-import { useSelector } from "react-redux";
-import { UserContext } from "./App";
-
-import ActionButton from "./ActionButton";
-import Modal from "@mui/material/Modal";
-import CloseIcon from "@mui/icons-material/Close";
-import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-
 import "../modal.css";
 
+import { useDispatch, useSelector } from "react-redux";
+
+import ActionButton from "./ActionButton";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import CloseIcon from "@mui/icons-material/Close";
+import Grid from "@material-ui/core/Grid";
+import Modal from "@mui/material/Modal";
+import React from "react";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@mui/material/Typography";
+import { changeModal } from "../redux/slices/buttonSlice";
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 const MyModal = () => {
-  const users = useSelector((state) => state.users)
-  
-  const { handleShow, shown } = useContext(UserContext);
-  const [modalShown, setModalShown] = shown;
+  const type = useSelector((state) => state.button.show);
+  const dispatch = useDispatch();
+
   const [userValues, setUserValues] = useState({
     id: uuidv4(),
     firstName: "",
@@ -29,7 +28,6 @@ const MyModal = () => {
   });
 
   const handleUserValueChange = (e) => {
-    console.log(userValues)
     const { name, value } = e.target;
     setUserValues({
       ...userValues,
@@ -40,8 +38,8 @@ const MyModal = () => {
   return (
     <Modal
       className="modal"
-      open={modalShown}
-      onClose={handleShow}
+      open={type}
+      onClose={() => dispatch(changeModal(!type))}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
@@ -50,13 +48,16 @@ const MyModal = () => {
           style={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between"
-            
+            justifyContent: "space-between",
           }}
         >
           {" "}
           <Typography variant="h5">User details</Typography>
-          <Button onClick={handleShow} color="error" size="medium">
+          <Button
+            onClick={() => dispatch(changeModal(!type))}
+            color="error"
+            size="medium"
+          >
             <CloseIcon />
           </Button>
         </div>
@@ -67,15 +68,12 @@ const MyModal = () => {
             alignItems="center"
             justifyContent="center"
             direction="column"
-        
           >
-            
             <Grid item>
               <TextField
                 id="first-input"
                 name="firstName"
                 label="First Name"
-                
                 type="text"
                 value={userValues.name}
                 onChange={handleUserValueChange}
@@ -91,7 +89,7 @@ const MyModal = () => {
                 onChange={handleUserValueChange}
               />
             </Grid>
-            <Grid item >
+            <Grid item>
               <TextField
                 id="email"
                 name="email"
@@ -116,7 +114,6 @@ const MyModal = () => {
         </form>
       </Box>
     </Modal>
-
   );
 };
 

@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { addUser, deleteUser, editUser } from "../redux/userSlice";
+import { addUser, deleteUser, editUser } from "../redux/slices/userSlice";
 
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { UserContext } from "./App";
+import { changeModal } from "../redux/slices/buttonSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
@@ -12,17 +13,12 @@ const ActionButton = ({ position, action, userValues }) => {
 
   const [buttonsType, setButtonsType] = buttonType;
 
-
   let buttonProperties = { text: "", color: "" };
-
   const dispatch = useDispatch();
+  const type = useSelector((state) => state.button.show);
+
   const currentUser = useSelector((state) => state.currentUser);
-  const users = useSelector((state) => state.users);
-  const user = currentUser.payload
-  console.log(currentUser)
-  console.log(users)
-
-
+  const user = currentUser.payload;
 
   if (action === "delete") {
     buttonProperties.text = <DeleteIcon />;
@@ -39,12 +35,13 @@ const ActionButton = ({ position, action, userValues }) => {
     if (action === "delete") {
       dispatch(deleteUser(position));
     } else if (buttonsType === "new") {
-      handleShow();
+
+      dispatch(changeModal(!type));
       dispatch(addUser(userValues));
     } else if (buttonsType === "edit") {
-      console.log(currentUser)
-      dispatch(editUser({userValues, user}));
-      handleShow();
+      dispatch(changeModal(!type));
+      dispatch(editUser({ userValues, user }));
+   
     }
   };
 

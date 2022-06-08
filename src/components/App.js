@@ -3,25 +3,21 @@ import React, { useState } from "react";
 import Header from "./Header";
 import ListBody from "./ListBody";
 import MyModal from "./Modal";
+import { useSelector } from "react-redux";
 
 export const UserContext = React.createContext();
 
 const App = () => {
-  const [isShown, setIsShown] = useState(false);
+  const type = useSelector((state) => state.button.show);
+
   const [buttonType, setButtonType] = useState("");
 
-  const handleShow = (e) => {
-    setIsShown((isShown) => !isShown);
-  };
   const handleButtonType = (action) => {
     setButtonType(action);
   };
   const contextStore = {
-    shown: [isShown, setIsShown],
-
     buttonType: [buttonType, setButtonType],
 
-    handleShow: handleShow,
     handleButtonType: handleButtonType,
   };
 
@@ -29,7 +25,7 @@ const App = () => {
     <UserContext.Provider value={contextStore}>
       <Header />
       <ListBody />
-      {isShown && <MyModal />}
+      {type && <MyModal />}
     </UserContext.Provider>
   );
 };
