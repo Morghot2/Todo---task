@@ -5,14 +5,18 @@ const buttonSlice = createSlice({
   name: "button",
   initialState: { show: false, type: "" },
   reducers: {
-      changeModal: (state, action) => {
-        // return state.show =!state.show
-          return produce(state, (draftState) => {
-            return draftState = { ...state, show: action.payload }
-          })
-      }
-  }
+    changeModal: (state, action) => {
+      return produce(state, (draftState) => {
+        return (draftState = { ...state, show: action.payload });
+      });
+    },
+    changeButtonType: (state, action) => {
+      return produce(state, (draftState) => {
+        return (draftState = { ...state, type: action.payload });
+      });
+    },
+  },
 });
 
-export const { changeModal } = buttonSlice.actions;
+export const { changeModal, changeButtonType } = buttonSlice.actions;
 export default buttonSlice.reducer;

@@ -35,9 +35,10 @@ const userSlice = createSlice({
     },
     deleteUser: (state, action) => {
       return produce(state, (draftState) => {
-        return draftState = state.filter((user) => action.payload !== state.indexOf(user));
-      })
-      
+        return (draftState = state.filter(
+          (user) => action.payload !== state.indexOf(user)
+        ));
+      });
     },
     editUser: (state, action) => {
       return produce(state, (draftState) => {

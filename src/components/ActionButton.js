@@ -1,21 +1,18 @@
-import React, { useContext } from "react";
+import React from "react";
+
+import { useDispatch, useSelector } from "react-redux";
 import { addUser, deleteUser, editUser } from "../redux/slices/userSlice";
+import { changeButtonType } from "../redux/slices/buttonSlice";
+import { changeModal } from "../redux/slices/buttonSlice";
 
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { UserContext } from "./App";
-import { changeModal } from "../redux/slices/buttonSlice";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 
 const ActionButton = ({ position, action, userValues }) => {
-  const { buttonType, handleShow } = useContext(UserContext);
-
-  const [buttonsType, setButtonsType] = buttonType;
-
   let buttonProperties = { text: "", color: "" };
   const dispatch = useDispatch();
-  const type = useSelector((state) => state.button.show);
+  const showType = useSelector((state) => state.button.show);
+  const showAction = useSelector((state) => state.button.type);
 
   const currentUser = useSelector((state) => state.currentUser);
   const user = currentUser.payload;
@@ -23,7 +20,7 @@ const ActionButton = ({ position, action, userValues }) => {
   if (action === "delete") {
     buttonProperties.text = <DeleteIcon />;
     buttonProperties.color = "error";
-  } else if (buttonsType === "edit") {
+  } else if (showAction === "edit") {
     buttonProperties.text = "Update";
     buttonProperties.color = "warning";
   } else {
@@ -33,15 +30,14 @@ const ActionButton = ({ position, action, userValues }) => {
 
   const handleUser = () => {
     if (action === "delete") {
+      dispatch(changeButtonType(action));
       dispatch(deleteUser(position));
-    } else if (buttonsType === "new") {
-
-      dispatch(changeModal(!type));
+    } else if (showAction === "new") {
+      dispatch(changeModal(!showType));
       dispatch(addUser(userValues));
-    } else if (buttonsType === "edit") {
-      dispatch(changeModal(!type));
+    } else if (showAction === "edit") {
+      dispatch(changeModal(!showType));
       dispatch(editUser({ userValues, user }));
-   
     }
   };
 

@@ -1,26 +1,24 @@
-import React, { useContext } from "react";
+import React from "react";
+
 import { useDispatch, useSelector } from "react-redux";
+import { changeButtonType, changeModal } from "../redux/slices/buttonSlice";
+import { changeCurrentUser } from "../redux/slices/currentUserSlice";
 
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
-import { UserContext } from "./App";
-import { changeCurrentUser } from "../redux/slices/currentUserSlice";
-import { changeModal } from "../redux/slices/buttonSlice";
 
 const ModifyButton = ({ action, position }) => {
   const dispatch = useDispatch();
   const type = useSelector((state) => state.button.show);
-
-
-  const { handleButtonType, handleShow } = useContext(UserContext);
   const handleButtonClick = () => {
-    dispatch(changeModal(!type))
+    dispatch(changeModal(!type));
+    dispatch(changeButtonType(action));
 
-    handleButtonType(action);
     if (position >= 0) {
       dispatch(changeCurrentUser(position));
-    } else return null;
+    }
   };
+
   if (action === "new") {
     return (
       <Button variant="contained" onClick={handleButtonClick}>

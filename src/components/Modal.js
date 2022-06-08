@@ -1,6 +1,7 @@
-import "../modal.css";
-
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { changeModal } from "../redux/slices/buttonSlice";
+import { v4 as uuidv4 } from "uuid";
 
 import ActionButton from "./ActionButton";
 import Box from "@mui/material/Box";
@@ -8,12 +9,10 @@ import Button from "@mui/material/Button";
 import CloseIcon from "@mui/icons-material/Close";
 import Grid from "@material-ui/core/Grid";
 import Modal from "@mui/material/Modal";
-import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@mui/material/Typography";
-import { changeModal } from "../redux/slices/buttonSlice";
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+
+import "../modal.css";
 
 const MyModal = () => {
   const type = useSelector((state) => state.button.show);
